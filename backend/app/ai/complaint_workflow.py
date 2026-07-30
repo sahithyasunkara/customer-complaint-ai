@@ -22,6 +22,8 @@ class SimpleCompiledWorkflow:
         current_node = self.entry_point
 
         while current_node != END:
+            if current_node not in dict(self.nodes):
+                break
             node_fn = dict(self.nodes)[current_node]
             current = node_fn(current)
 

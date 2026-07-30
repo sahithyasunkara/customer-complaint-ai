@@ -1,88 +1,79 @@
-# AI Customer Complaint Management System
+# AI-Powered Pharmaceutical Complaint Management System
 
-An AI-powered web application that helps businesses manage customer complaints by automatically classifying complaints and generating intelligent responses using Large Language Models (LLMs).
+This project is a polished, portfolio-ready complaint management application for pharmaceutical quality operations. It combines a React + Material UI frontend, a FastAPI backend, and a Redux-powered state layer to support complaint intake, AI-assisted summarization, and operational dashboards.
 
----
+## Project Overview
 
-## Features
+The application is designed to help teams manage customer complaints through a modern, enterprise-style workflow:
 
-- AI-powered complaint classification
-- Automatic response generation
-- FastAPI backend
-- React frontend
-- REST API communication
-- User-friendly interface
-- Secure environment variable management
+- Capture complaints through a professional intake experience
+- Use AI-assisted analysis to suggest values, risk, and summary content
+- Review complaint records from a dashboard and complaint detail view
+- Maintain a clean, responsive interface suitable for portfolio presentation
 
----
+## Architecture
+
+The project follows a modular monorepo structure:
+
+- Frontend: React, Vite, Redux Toolkit, Material UI, React Router, Recharts
+- Backend: FastAPI, Pydantic, SQLAlchemy, PostgreSQL-compatible persistence
+- AI Layer: structured analysis workflow for intake assistance
 
 ## Tech Stack
 
-### Frontend
-- React
-- Vite
-- HTML
-- CSS
-- JavaScript
+| Layer | Technologies |
+|-------|-------------|
+| Frontend | React 19, Redux Toolkit, React Router, MUI, Axios, Recharts |
+| Backend | Python, FastAPI, Pydantic, SQLAlchemy |
+| Data | PostgreSQL-compatible SQLAlchemy models |
+| AI | Modular workflow-based intake analysis |
+| Tooling | Docker Compose, Vite, Python unittest |
 
-### Backend
-- FastAPI
-- Python
-- Uvicorn
+## Folder Structure
 
-### AI
-- Groq API
-- Large Language Models (LLMs)
-
----
-
-## Project Structure
-
-```
+```text
 customer-complaint-ai/
-│
 ├── backend/
-│   ├── main.py
+│   ├── app/
+│   │   ├── ai/
+│   │   ├── api/
+│   │   ├── database/
+│   │   ├── models/
+│   │   ├── routers/
+│   │   ├── schemas/
+│   │   ├── services/
+│   │   └── utils/
+│   ├── tests/
 │   ├── requirements.txt
-│   └── .env
-│
+│   └── Dockerfile
 ├── frontend/
 │   ├── src/
-│   ├── public/
+│   │   ├── components/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   ├── services/
+│   │   ├── theme/
+│   │   └── utils/
 │   ├── package.json
-│   └── vite.config.js
-│
-├── .gitignore
+│   └── Dockerfile
+├── docker-compose.yml
 └── README.md
 ```
 
----
-
 ## Installation
 
-### Clone the repository
-
-```bash
-git clone https://github.com/sahithyasunkara/customer-complaint-ai.git
-```
-
-### Navigate to the project
-
-```bash
-cd customer-complaint-ai
-```
-
-### Backend Setup
+### Backend
 
 ```bash
 cd backend
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
-### Frontend Setup
+### Frontend
 
 ```bash
 cd frontend
@@ -90,42 +81,38 @@ npm install
 npm run dev
 ```
 
----
+### Full stack with Docker
 
-## Environment Variables
-
-Create a `.env` file inside the `backend` folder.
-
-Example:
-
-```
-GROQ_API_KEY=your_api_key_here
+```bash
+docker compose up --build
 ```
 
-**Do not upload your API key to GitHub.**
+## API Endpoints
 
----
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/health` | Health check |
+| GET | `/complaints` | List complaints |
+| POST | `/complaints` | Create complaint |
+| GET | `/complaints/{complaint_id}` | Fetch complaint by ID |
+| PUT | `/complaints/{complaint_id}` | Update complaint |
+| DELETE | `/complaints/{complaint_id}` | Delete complaint |
+| POST | `/ai/analyze` | Analyze complaint text or upload |
+
+## Screenshots
+
+Placeholder for portfolio screenshots.
 
 ## Future Improvements
 
-- User Authentication
-- Complaint History
-- Admin Dashboard
-- Email Notifications
-- Database Integration
-- Analytics Dashboard
-- Cloud Deployment
+- Add real Groq or OpenAI integration for richer AI reasoning
+- Introduce authentication and role-based access
+- Add attachment storage and document parsing
+- Expand dashboard analytics and export features
 
----
+## Verification
 
-## Author
+The application was verified with:
 
-**Sahithya Sunkara**
-
-GitHub: https://github.com/sahithyasunkara
-
----
-
-## License
-
-This project is created for learning and portfolio purposes.
+- Frontend production build: `npm run build`
+- Backend tests: `python -m unittest tests.test_ai_analyze tests.test_complaints`

@@ -24,8 +24,14 @@ apiClient.interceptors.response.use(
 );
 
 export const healthCheck = async () => {
-  const response = await apiClient.get("/health");
-  return response.data;
+  try {
+    const response = await apiClient.get("/health");
+    console.log("Health:", response.data);
+    return response.data;
+  } catch (err) {
+    console.log("Health Error:", err);
+    throw err;
+  }
 };
 
 export const getComplaints = async () => {

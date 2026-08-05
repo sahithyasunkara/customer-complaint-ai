@@ -17,10 +17,10 @@ class Settings(BaseSettings):
     debug: bool = False
 
     database_url: str = Field(
-        default="postgresql://complaint_user:complaint_pass@localhost:5432/complaint_db",
-        description="PostgreSQL connection string",
-    )
-
+    default="",
+    validation_alias="DATABASE_URL",
+    description="PostgreSQL connection string",
+)
     groq_api_key: str = ""
     groq_model: str = "gemma2-9b-it"
     groq_fallback_model: str = "llama-3.3-70b-versatile"

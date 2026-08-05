@@ -33,8 +33,8 @@ function AppRoutes() {
       {backendStatus === "offline" && (
         <Box sx={{ px: 2, pt: 2 }}>
           <Alert severity="warning" sx={{ borderRadius: 2 }}>
-            Backend API is offline. Start the server with uvicorn app.main:app --reload from the backend directory.
-          </Alert>
+  Unable to connect to Backend API.
+</Alert>
         </Box>
       )}
 

@@ -17,22 +17,23 @@ class Settings(BaseSettings):
     debug: bool = False
 
     database_url: str = Field(
-    default="",
-    validation_alias="DATABASE_URL",
-    description="PostgreSQL connection string",
-)
+        default="",
+        validation_alias="DATABASE_URL",
+        description="PostgreSQL connection string",
+    )
+
     groq_api_key: str = ""
     groq_model: str = "gemma2-9b-it"
     groq_fallback_model: str = "llama-3.3-70b-versatile"
 
-   cors_origins: list[str] = Field(
-    default_factory=lambda: [
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:5173",
-        "https://customer-complaint-ai-foh3-fxhgeaglw-sahithyasunkara-projects.vercel.app",
-    ]
-)
+    cors_origins: list[str] = Field(
+        default_factory=lambda: [
+            "http://localhost:5173",
+            "http://localhost:3000",
+            "http://127.0.0.1:5173",
+            "https://customer-complaint-ai-foh3-fxhgeaglw-sahithyasunkara-projects.vercel.app",
+        ]
+    )
 
     upload_dir: str = "uploads"
     max_upload_size_mb: int = 10
